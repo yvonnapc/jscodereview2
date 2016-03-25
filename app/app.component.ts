@@ -29,13 +29,15 @@ export class MealDisplayComponent {
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
-  directives: [MealComponent],
+  directives: [MealDisplayComponent, MealDetailsComponent],
   template: `
   <div *ngFor="#currentMeal of mealList">
     <meal-display (click)="mealClicked(currentMeal)"
       [class.selected]="currentMeal === selectedMeal"
       [meal]="currentMeal">
     </meal-display>
+    <meal-details *ngIf="currentMeal === selectedMeal" [meal]="currentMeal">
+    </meal-details>
   </div>
   `
 })
@@ -43,6 +45,7 @@ export class MealDisplayComponent {
 export class MealListComponent{
   public mealList: Meal[];
   public onMealSelect: EventEmitter<Meal>;
+  public selectedMeal: Meal;
   constructor(){
     this.onMealSelect = new EventEmitter();
   }

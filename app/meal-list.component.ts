@@ -14,26 +14,22 @@ import { HealthyPipe } from './healthy.pipe';
   pipes: [HealthyPipe],
   directives: [MealDisplayComponent, MealDetailsComponent, EditMealComponent, NewMealComponent],
   template: `
-  <div class="row">
-    <div class="col-sm-3">
-      <select (change)="onChange($event.target.value)">
-        <option value="all">Show All</option>
-        <option value="healthy">Show Healthy</option>
-        <option value="notHealthy">Show Not Healthy</option>
-      </select>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4" *ngFor="#currentMeal of mealList | healthy:filterHealthy">
+    <select class="selectpicker" (change)="onChange($event.target.value)">
+      <option value="all">Show All</option>
+      <option value="healthy">Show Healthy</option>
+      <option value="notHealthy">Show Not Healthy</option>
+    </select>
+    <div class="row">
+      <div class="col-sm-4" *ngFor="#currentMeal of mealList | healthy:filterHealthy">
         <meal-display (click)="mealClicked(currentMeal)"
           [class.selected]="currentMeal === selectedMeal"
           [meal]="currentMeal">
         </meal-display>
         <meal-details *ngIf="currentMeal === selectedMeal" [meal]="currentMeal">
         </meal-details>
-        <edit-meal *ngIf="currentMeal === selectedMeal" [meal]="selectedMeal"></edit-meal>
+        <edit-meal *ngIf="currentMeal === selectedMeal"[meal]="selectedMeal"></edit-meal>
+      </div>
     </div>
-  </div>
   <br>
   <br>
   <div class="row">

@@ -28,7 +28,8 @@ import { Meal } from './meal.model';
      this.meals = [
        new Meal("Breakfast", "Bagel and coffee", 200, 0),
        new Meal("Lunch", "Salad", 100, 1),
-       new Meal("Dinner", "Dumplings", 300, 2),
+       new Meal("Dinner", "Dumplings", 500, 2),
+       new Meal("Drinks", "Whiskey", 600, 3),
      ];
    }
    mealWasSelected(clickedMeal: Meal): void{

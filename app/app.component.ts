@@ -1,5 +1,21 @@
 import { Component } from 'angular2/core';
 
+@Component({
+  selector: 'meal-list',
+  inputs: ['mealList'],
+  template: `
+  <h3 *ngFor="#currentMeal of mealList" (click)="mealClicked(currentMeal)">
+    {{ currentMeal.name }}
+  </h3>
+  `
+})
+
+export class MealListComponent{
+  public mealList: Meal[];
+  mealClicked(clickedMeal: Meal): void {
+    console.log(clickedMeal);
+  }
+}
  @Component({
    selector: 'my-app',
    template: `
@@ -7,7 +23,7 @@ import { Component } from 'angular2/core';
     <h1>Meal Tracker</h1>
   </div>
   <div class="container">
-    <h2 *ngFor="#meal of meals">{{ meal.name }}</h2>
+    <h2 *ngFor="#meal of meals" (click)="mealWasSelected(meal)">{{ meal.name }}</h2>
   </div>
   <div class="page-footer">
     <p>Copyright (c) 2016 | Yvonna Contreras | Epicodus | Portland, OR</p>
@@ -23,6 +39,9 @@ import { Component } from 'angular2/core';
        new Meal("Lunch", "Salad", 100, 1),
        new Meal("Dinner", "Dumplings", 300, 2),
      ];
+   }
+   mealWasSelected(clickedMeal: Meal): void{
+     console.log(clickedMeal);
    }
  }
 

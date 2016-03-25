@@ -10,6 +10,10 @@ h2 {
 h3 {
   font-weight: 200;
 }
+
+h5 {
+  font-weight: 200;
+}
 .selected{
   color: #22bdf0;
 }
@@ -35,4 +39,14 @@ h3 {
 .filter{
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.textbox {
+  height: 25px;
+  width: 275px;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: darkred;
+  outline:0;
 }

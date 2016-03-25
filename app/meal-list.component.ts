@@ -14,21 +14,31 @@ import { HealthyPipe } from './healthy.pipe';
   pipes: [HealthyPipe],
   directives: [MealDisplayComponent, MealDetailsComponent, EditMealComponent, NewMealComponent],
   template: `
-  <select (change)="onChange($event.target.value)">
-    <option value="all">Show All</option>
-    <option value="healthy">Show Healthy</option>
-    <option value="notHealthy">Show Not Healthy</option>
-  </select>
-  <div *ngFor="#currentMeal of mealList | healthy:filterHealthy">
-    <meal-display (click)="mealClicked(currentMeal)"
-      [class.selected]="currentMeal === selectedMeal"
-      [meal]="currentMeal">
-    </meal-display>
-    <meal-details *ngIf="currentMeal === selectedMeal" [meal]="currentMeal">
-    </meal-details>
-    <edit-meal *ngIf="currentMeal === selectedMeal" [meal]="selectedMeal"></edit-meal>
+  <div class="row">
+    <div class="col-sm-3">
+      <select (change)="onChange($event.target.value)">
+        <option value="all">Show All</option>
+        <option value="healthy">Show Healthy</option>
+        <option value="notHealthy">Show Not Healthy</option>
+      </select>
+    </div>
   </div>
-  <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
+  <div class="row">
+    <div class="col-sm-4" *ngFor="#currentMeal of mealList | healthy:filterHealthy">
+        <meal-display (click)="mealClicked(currentMeal)"
+          [class.selected]="currentMeal === selectedMeal"
+          [meal]="currentMeal">
+        </meal-display>
+        <meal-details *ngIf="currentMeal === selectedMeal" [meal]="currentMeal">
+        </meal-details>
+        <edit-meal *ngIf="currentMeal === selectedMeal" [meal]="selectedMeal"></edit-meal>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
+  </div>
   `
 })
 
@@ -36,7 +46,7 @@ export class MealListComponent{
   public mealList: Meal[];
   public onMealSelect: EventEmitter<Meal>;
   public selectedMeal: Meal;
-  public filterHealthy: string = "notHealthy";
+  public filterHealthy: string = "All";
   constructor(){
     this.onMealSelect = new EventEmitter();
   }

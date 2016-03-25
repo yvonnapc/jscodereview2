@@ -7,6 +7,7 @@ import { Meal } from './meal.model';
   template: `
     <h5>Details: {{ meal.details }}</h5>
     <h5>Calories: {{ meal.calories }}</h5>
+
   `
 })
 

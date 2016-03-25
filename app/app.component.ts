@@ -10,9 +10,11 @@ import { Meal } from './meal.model';
     <h1>Meal Tracker</h1>
   </div>
   <div class="container">
-    <h2>Entries:</h2>
-    <meal-list [mealList]="meals"
-    (onMealSelect)="mealWasSelected($event)"></meal-list>
+    <div class="row">
+      <h2>Entries:</h2>
+      <meal-list [mealList]="meals"
+      (onMealSelect)="mealWasSelected($event)"></meal-list>
+    </div>
   </div>
   <div class="page-footer">
     <p>Copyright (c) 2016 | Yvonna Contreras | Epicodus | Portland, OR</p>

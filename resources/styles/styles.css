@@ -7,16 +7,14 @@ h2 {
   font-weight: lighter;
 }
 
-h3 {
+h3, h5 {
   font-weight: 200;
 }
 
-h5 {
-  font-weight: 200;
-}
 .selected{
   color: #22bdf0;
 }
+
 .page-footer {
   position: fixed;
   text-align: center;
@@ -26,7 +24,8 @@ h5 {
   height:30px;
   width:100%;
 }
-.task-form{
+
+.meal-form{
   margin-top: 80px;
   margin-bottom: 80px;
 }
@@ -36,14 +35,20 @@ h5 {
   padding-top: 8px;
   padding-bottom: 8px;
 }
-.filter{
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 .textbox {
   height: 25px;
-  width: 275px;
+  width: 200px;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: black;
+  outline:0;
+}
+
+.textboxEdit{
+  height: 25px;
+  width: 200px;
   background-color: transparent;
   border-style: solid;
   border-width: 0px 0px 1px 0px;

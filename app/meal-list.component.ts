@@ -6,7 +6,6 @@ import { EditMealComponent } from './edit-meal.component';
 import { NewMealComponent } from './new-meal.component';
 import { HealthyPipe } from './healthy.pipe';
 
-
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
@@ -14,7 +13,7 @@ import { HealthyPipe } from './healthy.pipe';
   pipes: [HealthyPipe],
   directives: [MealDisplayComponent, MealDetailsComponent, EditMealComponent, NewMealComponent],
   template: `
-    <select class="selectpicker" (change)="onChange($event.target.value)">
+    <select (change)="onChange($event.target.value)" class="selectpicker">
       <option value="all">Show All</option>
       <option value="healthy">Show Healthy</option>
       <option value="notHealthy">Show Not Healthy</option>
@@ -27,14 +26,14 @@ import { HealthyPipe } from './healthy.pipe';
         </meal-display>
         <meal-details *ngIf="currentMeal === selectedMeal" [meal]="currentMeal">
         </meal-details>
-        <edit-meal *ngIf="currentMeal === selectedMeal"[meal]="selectedMeal"></edit-meal>
+        <edit-meal *ngIf="currentMeal === selectedMeal" [meal]="selectedMeal"></edit-meal>
       </div>
     </div>
-  <br>
-  <br>
-  <div class="row">
-    <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
-  </div>
+    <br>
+    <br>
+    <div class="row">
+      <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
+    </div>
   `
 })
 

@@ -13,13 +13,15 @@ import { Component, EventEmitter } from 'angular2/core';
 
 export class MealListComponent{
   public mealList: Meal[];
-  mealClicked(clickedMeal: Meal): void {
-    console.log("child", clickedMeal);
-  }
   public onMealSelect: EventEmitter<Meal>;
   constructor(){
     this.onMealSelect = new EventEmitter();
   }
+  mealClicked(clickedMeal: Meal): void {
+    console.log("child", clickedMeal);
+    this.onMealSelect.emit(clickedMeal);
+  }
+
 }
 
  @Component({
@@ -31,7 +33,8 @@ export class MealListComponent{
   </div>
   <div class="container">
     <h2>Entries:</h2>
-    <meal-list [mealList]="meals"></meal-list>
+    <meal-list [mealList]="meals"
+    (onMealSelect)="mealWasSelected($event)"></meal-list>
   </div>
   <div class="page-footer">
     <p>Copyright (c) 2016 | Yvonna Contreras | Epicodus | Portland, OR</p>

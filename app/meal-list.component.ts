@@ -37,9 +37,9 @@ export class MealListComponent{
     this.selectedMeal = clickedMeal;
     this.onMealSelect.emit(clickedMeal);
   }
-  createMeal(name: string, details: string, calories: number): void{
+  createMeal(newMeal: any[]): void{
     this.mealList.push(
-      new Meal(name, details, calories, this.mealList.length)
+      new Meal(newMeal[0], newMeal[1], newMeal[2], this.mealList.length)
     );
   }
 }

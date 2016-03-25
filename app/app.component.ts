@@ -1,6 +1,19 @@
 import { Component, EventEmitter } from 'angular2/core';
 
 @Component({
+  selector: 'meal-details',
+  inputs: ['meal'],
+  template: `
+    <h4>{{ meal.details }}</h4>
+    <h4>{{ meal.calories }}</h4>
+  `
+})
+
+export class MealDetailsComponent {
+  public meal: Meal;
+}
+
+@Component({
   selector: 'meal-display',
   inputs: ['meal'],
   template: `
@@ -8,7 +21,7 @@ import { Component, EventEmitter } from 'angular2/core';
   `
 })
 
-export class MealComponent {
+export class MealDisplayComponent {
   public meal: Meal;
 }
 
@@ -18,11 +31,12 @@ export class MealComponent {
   outputs: ['onMealSelect'],
   directives: [MealComponent],
   template: `
-  <meal-display *ngFor="#currentMeal of mealList"
-    (click)="mealClicked(currentMeal)"
-    [class.selected]="currentMeal === selectedMeal"
-    [meal]="currentMeal">
-  </meal-display>
+  <div *ngFor="#currentMeal of mealList">
+    <meal-display (click)="mealClicked(currentMeal)"
+      [class.selected]="currentMeal === selectedMeal"
+      [meal]="currentMeal">
+    </meal-display>
+  </div>
   `
 })
 

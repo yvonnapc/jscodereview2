@@ -3,13 +3,14 @@ import { Meal } from './meal.model';
 import { MealDisplayComponent } from './meal-display.component';
 import { MealDetailsComponent } from './meal-details.component';
 import { EditMealComponent } from './edit-meal.component';
+import { NewMealComponent } from './new-meal.component';
 
 
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
-  directives: [MealDisplayComponent, MealDetailsComponent, EditMealComponent],
+  directives: [MealDisplayComponent, MealDetailsComponent, EditMealComponent, NewMealComponent],
   template: `
   <div *ngFor="#currentMeal of mealList">
     <meal-display (click)="mealClicked(currentMeal)"
@@ -19,6 +20,7 @@ import { EditMealComponent } from './edit-meal.component';
     <meal-details *ngIf="currentMeal === selectedMeal" [meal]="currentMeal">
     </meal-details>
     <edit-meal *ngIf="currentMeal === selectedMeal" [meal]="selectedMeal"></edit-meal>
+    <new-meal></new-meal>
   </div>
   `
 })

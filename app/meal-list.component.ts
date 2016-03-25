@@ -18,7 +18,7 @@ import { EditMealComponent } from './edit-meal.component';
     </meal-display>
     <meal-details *ngIf="currentMeal === selectedMeal" [meal]="currentMeal">
     </meal-details>
-    <edit-meal [meal]="selectedMeal"></edit-meal>
+    <edit-meal *ngIf="currentMeal === selectedMeal" [meal]="selectedMeal"></edit-meal>
   </div>
   `
 })

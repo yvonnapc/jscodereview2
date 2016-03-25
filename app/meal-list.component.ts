@@ -4,12 +4,14 @@ import { MealDisplayComponent } from './meal-display.component';
 import { MealDetailsComponent } from './meal-details.component';
 import { EditMealComponent } from './edit-meal.component';
 import { NewMealComponent } from './new-meal.component';
+import { HealthyPipe } from './healthy.pipe';
 
 
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
+  pipes: [HealthyPipe],
   directives: [MealDisplayComponent, MealDetailsComponent, EditMealComponent, NewMealComponent],
   template: `
   <div *ngFor="#currentMeal of mealList">
